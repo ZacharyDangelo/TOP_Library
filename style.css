@@ -1,0 +1,92 @@
+body{
+    margin:0;
+    padding:0;
+    background-color:#202427;
+    color:#d8cbbb;
+    width:99vw;
+    height:99vh;
+}
+
+
+.add-book-form{
+    background-color:#8d806f;
+    color:#2a322e;
+    display:flex;
+    flex-direction:column;
+    position: absolute;
+    width: 30rem;
+    height: 30rem;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    border: 2px solid #d8cbbb;
+    padding-left:2rem;
+    padding-right:2rem;
+}
+
+.invisible{
+    display:none;
+}
+
+.alert{
+    color:red;
+}
+
+.read{
+    border: thin solid lightgreen;
+}
+
+.not-read{
+    border: thin solid lightcoral;
+}
+
+.root{
+    margin-left: 6rem;
+    max-width:100%;
+    max-height:100%;
+    grid-template-rows: 1fr 1fr;
+    display:grid;
+    grid-template-areas: 
+    "books books sidebar"
+    ". button sidebar";
+}
+
+.book-container{
+    grid-area: books;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-width: 75%;
+}
+
+.book-card{
+    background-color: #29322d;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:20rem;
+    width:20rem;
+    margin:12px;
+}
+
+#add-book-button{
+    height: 32px;
+    width:128px;
+}
+
+.sidebar{
+    grid-area: sidebar;
+    border-left: 3px solid #d8cbbb;
+    display:flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-top: 6rem;
+    height:calc(100vh-6rem);
+    max-width: 25%;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <script defer type="text/javascript" src="./library.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+    <div class="root">
+        <div class="book-container">
+
+        </div>
+        <div class="sidebar">
+            <p><b>Total Books:</b><span id="total-books"></span></p>    
+            <p><b>Total Read:</b><span id="total-read"></span></p>    
+            <p><b>Total Unread:</b><span id="total-unread"></span></p>    
+            <p><b>Pages Read:</b><span id="pages-read"></span></p>    
+            <p><b>Pages To Read:</b><span id="pages-unread"></span></p>     
+            <p><b>Favorite Author:</b><span id="favorite-author"></span></p>    
+            <button id="add-book-button">Add Book</button>
+                
+        </div>
+        <form class="add-book-form invisible">
+            <h2>Add a book</h2>
+            <label for="title"><b>Title</b></label>
+            <span role="alert" id="title-alert" class="invisible alert">* Please enter the title of the book.</span>
+            <input id="title-input" type="text" placeholder="Enter Title" name="title" required>
+            <label for="author"><b>Author</b></label>
+            <span role="alert" id="author-alert" class="invisible alert">* Please enter the Author of the book.</span>
+            <input id="author-input" type="author" placeholder="Enter Author" name="author" required>
+            <label for="pages"><b>Pages</b></label>
+            <span role="alert" id="pages-alert" class="invisible alert">* Please enter the number of pages in the book.</span>
+            <input id="pages-input" type="number" name="pages" required>
+            <label for="read"><b>Read</b></label>
+            <input id="read-input" type="checkbox" name="read">
+            <button id="form-submit" type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
