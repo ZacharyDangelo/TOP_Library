@@ -125,6 +125,7 @@ function displayBooks(library){
         bookContainer.appendChild(card);
         addButtons(card);
     });
+    updateStats();
 }
 
 function addButtons(elem){
@@ -161,7 +162,7 @@ function removeBook(evt){
     myLibrary.splice(evt.currentTarget.id_param,1);
     bookContainer.removeChild(evt.currentTarget.card_param);
     setBookIds(evt.currentTarget.id_param);
-    
+    updateStats();
 }
 
 function toggleReadStatus(evt){
@@ -175,10 +176,36 @@ function toggleReadStatus(evt){
     }
     if(!book.isRead){
         card.classList.remove("read");
-        card.classList.add()
+        card.classList.add("not-read");
     }
+    updateStats();
 
 
+}
+
+function updateStats(){
+    const totalBooksElem = document.getElementById("total-books");
+    const totalReadElem = document.getElementById("total-read");
+    const totalUnreadElem = document.getElementById("total-unread");
+    const pagesReadElem = document.getElementById("pages-read");
+    const pagesUnreadElem = document.getElementById("pages-unread");
+
+    let totalBooks = 0;
+    let totalRead = 0;
+    let totalUnread = 0;
+    let pagesRead = 0;
+    let pagesUnread = 0;
+
+    myLibrary.forEach(book => {
+        totalBooks++;
+        book.isRead ? totalRead++ : totalUnread++;
+        book.isRead ? pagesRead += +book.pages : pagesUnread += +book.pages;
+    });
+    totalBooksElem.textContent = totalBooks;
+    totalReadElem.textContent = totalRead;
+    totalUnreadElem.textContent = totalUnread;
+    pagesReadElem.textContent = pagesRead;
+    pagesUnreadElem.textContent = pagesUnread;
 }
 
 /*
