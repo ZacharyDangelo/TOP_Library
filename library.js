@@ -148,18 +148,19 @@ function addButtons(elem){
 }
 
 function setBookIds(idRemoved){
+    console.log(idRemoved);
+    let currId = 0;
     Array.from(bookContainer.children).forEach( elem => {
-        if(elem.dataset.id > idRemoved){
-            elem.dataset.id-=1;
-        }
+        elem.dataset.id = currId;
+        currId++;
     })
 }
 
 function removeBook(evt){
     console.log(evt.currentTarget.id_param);
     myLibrary.splice(evt.currentTarget.id_param,1);
-    setBookIds(evt.currentTarget.id_param);
     bookContainer.removeChild(evt.currentTarget.card_param);
+    setBookIds(evt.currentTarget.id_param);
     
 }
 
@@ -168,11 +169,19 @@ function toggleReadStatus(evt){
     const book = myLibrary[id];
     const card = evt.currentTarget.card_param;
     book.isRead = !book.isRead;
-    book.isRead ? card.classList.add("read") : card.classList.add("not-read");
-    book.isRead ? card.classList.remove("not-read") : card.classList.remove("read");
+    if(book.isRead){
+        card.classList.remove("not-read");
+        card.classList.add("read");
+    }
+    if(!book.isRead){
+        card.classList.remove("read");
+        card.classList.add()
+    }
+
+
 }
 
-
+/*
 const book1 = new Book("Game of thrones", "Georgy Martino", 100000, false);
 addBookToLibrary(book1);
 const book2 = new Book("Dresden Files", "Jim Butcher", 510, true);
@@ -184,3 +193,4 @@ displayBooks(myLibrary);
 const book4 = new Book("Oreilly Perl Programming", "Jim oreilly", 999, true);
 addBookToLibrary(book4);
 displayBooks(myLibrary);
+*/
