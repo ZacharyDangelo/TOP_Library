@@ -6,11 +6,13 @@ document.querySelector("#form-submit").addEventListener("click", submitAddBookFo
 
 
 
-function Book(title, author, pages, isRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
+class Book{
+    constructor(title, author, pages, isRead){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
 }
 
 function showAddBook(){
@@ -101,7 +103,14 @@ function addBookToLibrary(book){
     displayBooks(myLibrary);
 }
 
+function clearBooks(library){
+    while(bookContainer.firstChild){
+        bookContainer.removeChild(bookContainer.firstChild);
+    }
+}
+
 function displayBooks(library){
+    clearBooks(myLibrary);
     library.forEach(book => {
         let bookIsDisplayed = false;
         Array.from(bookContainer.children).forEach( elem => {
@@ -161,6 +170,7 @@ function removeBook(evt){
     console.log(evt.currentTarget.id_param);
     myLibrary.splice(evt.currentTarget.id_param,1);
     bookContainer.removeChild(evt.currentTarget.card_param);
+    displayBooks(myLibrary);
     setBookIds(evt.currentTarget.id_param);
     updateStats();
 }
